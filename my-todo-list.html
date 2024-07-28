@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Todo List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/my-todo-list.css" />
+  </head>
+  <body>
+    <div class="cover-photo-container">
+      <img class="cover-photo" src="photos/_ (5).jpeg" />
+    </div>
+    <div class="main-body">
+      <div class="side-profile-bar">
+        <div class="search-bar">
+          <input class="search-input" placeholder="Search" />
+          <button class="search-button">
+            <img
+              class="search-img"
+              src="icons/search_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
+            />
+          </button>
+        </div>
+        <div class="sidebar">
+          <div class="sidebar-item">
+            <img
+              class="icon"
+              src="icons/home_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
+            />
+            <div>
+              <button class="sidebar-home-button">Home
+                <span class="tooltip-text">back to home</span>
+              </button>
+            </div>
+          </div>
+          <div class="sidebar-item">
+            <img
+              class="icon"
+              src="icons/add_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
+            />
+            <div>
+              <button class="sidebar-create-button">
+                Create
+                <span class="tooltip-text">create to-do list</span>
+              </button>
+            </div>
+          </div>
+          <div class="sidebar-item">
+            <img
+              class="icon"
+              src="icons/edit_note_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
+            />
+            <div>
+              <button class="sidebar-notes-button">
+                Notes
+                <span class="tooltip-text">your notes</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-container">
+        <div class="todo-container">
+          <div class="todo-input-grid">
+            <input
+              class="js-name-input name-input"
+              placeholder="Enter your todos"
+              onkeydown="handleOnkeydown(event);"
+            />
+            <input class="js-due-date-input due-date-input" type="date" />
+            <button class="add-todo-button" onclick="addTodo();">
+              <img class="add-icon" src="icons/add-light-brown.png" />
+            </button>
+          </div>
+
+          <div class="js-todo-list todo-grid"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="scripts/my-todo-list.js"></script>
+  </body>
+</html>

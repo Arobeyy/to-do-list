@@ -1,0 +1,210 @@
+/* General Styles */
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  margin: 0;
+  background-color: rgb(240, 235, 206);
+}
+
+button {
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+/* Cover Photo */
+.cover-photo-container {
+  position: fixed;
+  z-index: 201;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cover-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+/* Main Body */
+.main-body {
+  display: flex;
+  margin-top: 150px;
+}
+
+/* Sidebar */
+.side-profile-bar {
+  width: 170px;
+  position: fixed;
+  z-index: 202; /* Ensure it's above the main content */
+  top: 150px;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(165, 135, 82, 0.582);
+  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  margin: 8px;
+}
+
+.icon {
+  width: 31px;
+  height: 31px;
+  margin-right: 5px;
+}
+
+/*
+.sidebar-icon-button {
+  color: white;
+  font-weight: bold;
+  flex: 1;
+}
+*/
+
+.sidebar-home-button,
+.sidebar-create-button,
+.sidebar-notes-button {
+  position: relative;
+  display: inline-block;
+  color: white;
+  font-weight: bold;
+  background-color: transparent;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 90px;
+  background-color:  rgb(240, 235, 206);
+  color:gray;
+  text-align: center;
+  border-radius: 15px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  top: 135%; 
+  left: 120%;
+  margin-left: -60px; /* Center the tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+}
+
+.sidebar-home-button:hover .tooltip-text,
+.sidebar-create-button:hover .tooltip-text,
+.sidebar-notes-button:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  column-gap: 7px;
+  margin: 15px 0;
+  padding: 0 9px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 5px 7px;
+  border: none;
+  border-radius: 10px;
+}
+
+.search-button {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  padding-top: 9px;
+}
+
+.search-img {
+  width: 100%;
+}
+
+/* Content Container */
+.content-container {
+  flex: 1;
+  margin-left: 190px; /* Adjust for sidebar width */
+  padding: 20px;
+  overflow: auto; /* Enable scrolling if content overflows */
+}
+
+/* Todo Container */
+.todo-container {
+  padding: 20px;
+}
+
+.todo-input-grid {
+  display: grid;
+  grid-template-columns: 300px 32px 42px;
+  align-items: center;
+  column-gap: 10px;
+  margin: 45px 20px 10px 0;
+}
+
+.todo-grid {
+  color: rgb(26, 25, 25);
+  display: grid;
+  grid-template-columns: 3fr 1fr 42px 39px;
+  align-items: center;
+  column-gap: 10px;
+  row-gap: 10px;
+  max-width: 760px;
+  margin-right: 20px;
+}
+
+/* Input Styles */
+.name-input,
+.due-date-input {
+  font-size: 15px;
+  padding: 7px 10px;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: rgb(240, 235, 206);
+}
+
+.name-input {
+  width: 80%;
+  border-radius: 20px;
+}
+
+.due-date-input {
+  padding: 6px;
+  border-radius: 4px;
+}
+
+/* Button and Icon Styles */
+.add-icon,
+.delete-icon,
+.done-icon {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(240, 235, 206);
+}
+
+.delete-todo-button,
+.done-todo-button {
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.done-clicked {
+  text-decoration: line-through;
+  color: gray;
+}
