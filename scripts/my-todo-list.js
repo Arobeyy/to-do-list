@@ -13,7 +13,11 @@ function dropDownTitleBox () {
     <input class="js-title-input" placeholder="Search" />
     <button class="js-save-title-button" onclick="
       addTitle();
+      generateTodoList ();
+      saveTitle ();
+      saveTodoList ();
       removeAddInputBox ();
+      
     ">
       save
     </button>
@@ -49,6 +53,7 @@ function editTitleBox() {
     <input class="js-edit-title-input" placeholder="add title" />
     <button class="js-save-edited-title" onclick="
       editTitle();
+      saveTitle ();
       removeEditInputBox();
     ">
       save
@@ -69,7 +74,8 @@ function editTitle () {
     <div>
       <div>${title}</div>
       <button onclick = "
-        editTitleBox();
+        editTitleBox ();
+        saveTitle ();
       ">Edit</button>
     </div>
   `;
@@ -94,9 +100,24 @@ function loadTodoListTitle() {
   }
 }
 
-/* 
 
-*/
+function generateTodoList () {
+  const html = `
+    <div class="todo-input-grid">
+      <input
+        class="js-name-input name-input"
+        placeholder="Enter your todos"
+        onkeydown="handleOnkeydown(event);"
+      />
+      <input class="js-due-date-input due-date-input" type="date" />
+      <button class="add-todo-button" onclick="addTodo();">
+        <img class="add-icon" src="icons/add-light-brown.png" />
+      </button>
+    </div>
+  `;
+  document.querySelector('.js-created-todo').innerHTML = html;
+}
+
 
 function handleOnkeydown(event) {
   if (event.key === 'Enter') {

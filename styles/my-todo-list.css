@@ -44,7 +44,7 @@ button {
   top: 150px;
   left: 0;
   bottom: 0;
-  background-color: rgba(165, 135, 82, 0.466);
+  background-color: rgba(190, 158, 102, 0.466);
   box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
@@ -140,6 +140,7 @@ button {
 /* Content Container */
 .content-container {
   flex: 1;
+  height: 70vh;
   margin-left: 190px; /* Adjust for sidebar width */
   padding: 20px;
   overflow: auto; /* Enable scrolling if content overflows */
