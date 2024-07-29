@@ -1,10 +1,102 @@
+let todoListTitle = ``;
 let todoList = [];
 
 // Load to-do list from localStorage when the page loads
 document.addEventListener('DOMContentLoaded', (event) => {
+  loadTodoListTitle();
   loadTodoList();
   renderTodoList();
 });
+
+function dropDownTitleBox () {
+  const html = `
+    <input class="js-title-input" placeholder="Search" />
+    <button class="js-save-title-button" onclick="
+      addTitle();
+      removeAddInputBox ();
+    ">
+      save
+    </button>
+  `;
+  document.querySelector('.js-add-title-container').innerHTML = html;
+}
+
+function removeAddInputBox () {
+  document.querySelector('.js-add-title-container').innerHTML = ``;
+}
+
+function addTitle () {
+  const inputElement = document.querySelector('.js-title-input');
+  const title = inputElement.value;
+
+  const html = `
+    <div>
+      <div>${title}</div>
+      <button onclick = "
+        editTitleBox();
+      ">Edit</button>
+    </div>
+  `;
+
+  document.querySelector('.todo-title').innerHTML = html;
+  todoListTitle = title;
+  saveTitle();
+}
+
+
+function editTitleBox() {
+  const html = `
+    <input class="js-edit-title-input" placeholder="add title" />
+    <button class="js-save-edited-title" onclick="
+      editTitle();
+      removeEditInputBox();
+    ">
+      save
+    </button>
+  `;
+  document.querySelector('.js-edit-title-container').innerHTML = html;
+}
+
+function removeEditInputBox () {
+  document.querySelector('.js-edit-title-container').innerHTML = ``;
+}
+
+function editTitle () {
+  const inputElement = document.querySelector('.js-edit-title-input');
+  const title = inputElement.value;
+
+  const html = `
+    <div>
+      <div>${title}</div>
+      <button onclick = "
+        editTitleBox();
+      ">Edit</button>
+    </div>
+  `;
+
+  document.querySelector('.todo-title').innerHTML = html;
+  todoListTitle = title;
+  saveTitle();
+}
+
+function saveTitle() {
+  const todoListTitleJson = JSON.stringify(todoListTitle);
+  localStorage.setItem('todoListTitle', todoListTitleJson);
+}
+
+// Load to-do list title from localStorage
+function loadTodoListTitle() {
+  const todoListTitleJson = localStorage.getItem('todoListTitle');
+  if (todoListTitleJson) {
+    todoListTitle = JSON.parse(todoListTitleJson);
+  } else {
+    todoListTitle = ``;
+  }
+}
+
+/* 
+
+*/
 
 function handleOnkeydown(event) {
   if (event.key === 'Enter') {

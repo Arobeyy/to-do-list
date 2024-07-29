@@ -43,12 +43,15 @@
               src="icons/add_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
             />
             <div>
-              <button class="sidebar-create-button">
+              <button class="sidebar-create-button" onclick="
+                dropDownTitleBox();
+              ">
                 Create
                 <span class="tooltip-text">create to-do list</span>
               </button>
             </div>
           </div>
+          <div class="js-add-title-container"></div>
           <div class="sidebar-item">
             <img
               class="icon"
@@ -66,6 +69,8 @@
 
       <div class="content-container">
         <div class="todo-container">
+          <div class="todo-title"></div>
+          <div class="js-edit-title-container"></div>
           <div class="todo-input-grid">
             <input
               class="js-name-input name-input"
