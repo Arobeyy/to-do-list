@@ -16,8 +16,7 @@ function dropDownTitleBox () {
       generateTodoList ();
       saveTitle ();
       saveTodoList ();
-      removeAddInputBox ();
-      
+      removeAddInputBox (); 
     ">
       <img class = "save-img" src = "icons/check_circle.png">
     </button>
@@ -33,12 +32,19 @@ function addTitle () {
   const inputElement = document.querySelector('.js-title-input');
   const title = inputElement.value;
 
+  if (!title) {
+    alert("add title for your to-do list.");
+    
+  }
+
   const html = `
-    <div>
-      <div>${title}</div>
-      <button onclick = "
+    <div class = "edit-grid">
+      <div class = "edit-title-input-box">${title}</div>
+      <button class = "edit-title-button" onclick = "
         editTitleBox();
-      ">Edit</button>
+      ">
+        <img class = "edit-title" src = "icons/edit_square_brown.png">
+      </button>
     </div>
   `;
 
