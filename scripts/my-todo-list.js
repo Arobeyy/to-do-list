@@ -1,19 +1,19 @@
-let todoListTitle = ``;
+let   todoListTitle = localStorage.getItem("todoListTitle") || null;
 let todoList = [];
 
 // Load to-do list from localStorage when the page loads
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener("DOMContentLoaded", (event) => {
   loadTodoListTitle();
   loadTodoList();
   renderTodoList();
 });
 
-function dropDownTitleBox () {
+function dropDownTitleBox() {
   const html = `
     <input class="js-title-input title-input-box" placeholder=" add title" />
     <button class="js-save-title-button title-save-button" onclick="
       addTitle();
-      generateTodoList ();
+      renderTodoInput();
       saveTitle ();
       saveTodoList ();
       removeAddInputBox (); 
@@ -21,22 +21,27 @@ function dropDownTitleBox () {
       <img class = "save-img" src = "icons/check_circle.png">
     </button>
   `;
-  document.querySelector('.js-add-title-container').innerHTML = html;
+  document.querySelector(".js-add-title-container").innerHTML = html;
 }
 
-function removeAddInputBox () {
-  document.querySelector('.js-add-title-container').innerHTML = ``;
+function removeAddInputBox() {
+  document.querySelector(".js-add-title-container").innerHTML = ``;
 }
 
-function addTitle () {
-  const inputElement = document.querySelector('.js-title-input');
+function addTitle() {
+  const inputElement = document.querySelector(".js-title-input");
   const title = inputElement.value;
 
   if (!title) {
     alert("add title for your to-do list.");
-    
   }
 
+  renderTodoTitle(title);
+  todoListTitle = title;
+  saveTitle();
+}
+
+function renderTodoTitle(title) {
   const html = `
     <div class = "edit-grid">
       <button class = "edit-title-button" onclick = "
@@ -48,11 +53,8 @@ function addTitle () {
     </div>
   `;
 
-  document.querySelector('.todo-title').innerHTML = html;
-  todoListTitle = title;
-  saveTitle();
+  document.querySelector(".todo-title").innerHTML = html;
 }
-
 
 function editTitleBox() {
   const html = `
@@ -65,40 +67,30 @@ function editTitleBox() {
       save
     </button>
   `;
-  document.querySelector('.js-edit-title-container').innerHTML = html;
+  document.querySelector(".js-edit-title-container").innerHTML = html;
 }
 
-function removeEditInputBox () {
-  document.querySelector('.js-edit-title-container').innerHTML = ``;
+function removeEditInputBox() {
+  document.querySelector(".js-edit-title-container").innerHTML = ``;
 }
 
-function editTitle () {
-  const inputElement = document.querySelector('.js-edit-title-input');
+function editTitle() {
+  const inputElement = document.querySelector(".js-edit-title-input");
   const title = inputElement.value;
 
-  const html = `
-    <div>
-      <div>${title}</div>
-      <button onclick = "
-        editTitleBox ();
-        saveTitle ();
-      ">Edit</button>
-    </div>
-  `;
-
-  document.querySelector('.todo-title').innerHTML = html;
+  renderTodoTitle(title);
   todoListTitle = title;
   saveTitle();
 }
 
 function saveTitle() {
   const todoListTitleJson = JSON.stringify(todoListTitle);
-  localStorage.setItem('todoListTitle', todoListTitleJson);
+  localStorage.setItem("todoListTitle", todoListTitleJson);
 }
 
 // Load to-do list title from localStorage
 function loadTodoListTitle() {
-  const todoListTitleJson = localStorage.getItem('todoListTitle');
+  const todoListTitleJson = localStorage.getItem("todoListTitle");
   if (todoListTitleJson) {
     todoListTitle = JSON.parse(todoListTitleJson);
   } else {
@@ -106,8 +98,7 @@ function loadTodoListTitle() {
   }
 }
 
-
-function generateTodoList () {
+function renderTodoInput() {
   const html = `
     <div class="todo-input-grid">
       <input
@@ -121,12 +112,11 @@ function generateTodoList () {
       </button>
     </div>
   `;
-  document.querySelector('.js-created-todo').innerHTML = html;
+  document.querySelector(".js-created-todo").innerHTML = html;
 }
 
-
 function handleOnkeydown(event) {
-  if (event.key === 'Enter') {
+  if (event.key === "Enter") {
     addTodo();
   }
 }
@@ -134,9 +124,14 @@ function handleOnkeydown(event) {
 function renderTodoList() {
   let todoListHtml = ``;
 
+  if (todoListTitle) {
+    renderTodoTitle(todoListTitle);
+    renderTodoInput();
+  }
+
   for (let i = 0; i < todoList.length; i++) {
     const todoObject = todoList[i];
-    const doneClass = todoObject.done ? 'done-clicked' : '';
+    const doneClass = todoObject.done ? "done-clicked" : "";
     const html = `
         <div id = "js-input-text-${i}" class = "${doneClass}" >&bull; ${todoObject.name} 
         </div>
@@ -168,12 +163,12 @@ function addClassToText(index) {
 // Save to-do list to localStorage
 function saveTodoList() {
   const todoListJson = JSON.stringify(todoList);
-  localStorage.setItem('todoList', todoListJson);
+  localStorage.setItem("todoList", todoListJson);
 }
 
 // Load to-do list from localStorage
 function loadTodoList() {
-  const todoListJson = localStorage.getItem('todoList');
+  const todoListJson = localStorage.getItem("todoList");
   if (todoListJson) {
     todoList = JSON.parse(todoListJson);
   } else {
@@ -193,7 +188,7 @@ function addTodo() {
     const todo = {
       name: name,
       dueDate: dueDate,
-      done: false
+      done: false,
     };
     todoList.push(todo);
     console.log(todoList);
