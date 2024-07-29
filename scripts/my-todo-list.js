@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 function dropDownTitleBox () {
   const html = `
-    <input class="js-title-input" placeholder="Search" />
-    <button class="js-save-title-button" onclick="
+    <input class="js-title-input title-input-box" placeholder=" add title" />
+    <button class="js-save-title-button title-save-button" onclick="
       addTitle();
       generateTodoList ();
       saveTitle ();
@@ -19,7 +19,7 @@ function dropDownTitleBox () {
       removeAddInputBox ();
       
     ">
-      save
+      <img class = "save-img" src = "icons/check_circle.png">
     </button>
   `;
   document.querySelector('.js-add-title-container').innerHTML = html;

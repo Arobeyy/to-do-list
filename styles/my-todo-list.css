@@ -137,6 +137,31 @@ button {
   width: 100%;
 }
 
+.title-container {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  padding: 0 8px;
+}
+
+.title-input-box {
+  width: 100%;
+  padding: 4px 6px;
+  border: none;
+  border-radius: 10px;
+}
+
+.title-save-button {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  padding-top: 5px;
+}
+
+.save-img {
+  width: 100%;
+}
+
 /* Content Container */
 .content-container {
   flex: 1;
