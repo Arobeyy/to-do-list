@@ -238,7 +238,7 @@ button {
 
 .edit-grid {
   display: grid;
-  grid-template-columns: 1fr 32px;
+  grid-template-columns: 32px 1fr;
   align-items: center;
   column-gap: 10px;
   margin: 20px 20px 10px 0;
@@ -246,6 +246,7 @@ button {
 }
 
 .edit-title {
+  margin-top: 4px;
   opacity: 0.5;
 }
 

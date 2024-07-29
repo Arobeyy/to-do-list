@@ -39,12 +39,12 @@ function addTitle () {
 
   const html = `
     <div class = "edit-grid">
-      <div class = "edit-title-input-box">${title}</div>
       <button class = "edit-title-button" onclick = "
         editTitleBox();
       ">
         <img class = "edit-title" src = "icons/edit_square_brown.png">
       </button>
+      <div class = "edit-title-input-box">${title}</div>
     </div>
   `;
 
