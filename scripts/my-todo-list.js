@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 function dropDownTitleBox() {
   const html = `
-    <input class="js-title-input title-input-box" placeholder=" add title" />
+    <input class="js-title-input title-input-box" placeholder=" Enter title" />
     <button class="js-save-title-button title-save-button" onclick="
       addTitle('.js-title-input');
       renderTodoInput();
@@ -23,7 +23,7 @@ function dropDownTitleBox() {
 }
 
 function removeInputBox(box) {
-  document.querySelector(`${box}`).innerHTML = null;
+  document.querySelector(`${box}`).innerHTML = ``;
 }
 
 function addTitle(from) {
@@ -46,9 +46,8 @@ function renderTodoTitle(title) {
         editTitleBox();
       ">
         <img class = "edit-title" src = "icons/edit_square_brown.png">
-        <span class="tooltip-text">Edittitle</span>
       </button>
-      <div class = "edited-title">${title}</div>
+      <div class = "edit-title-input-box">${title}</div>
     </div>
   `;
 
@@ -57,7 +56,7 @@ function renderTodoTitle(title) {
 
 function editTitleBox() {
   const html = `
-    <input class="js-edit-title-input edit-title-input" placeholder="Enter a title" />
+    <input class="js-edit-title-input edit-title-input" placeholder="Enter title" />
     <button class="js-save-edited-title edit-save-button" onclick="
       addTitle('.js-edit-title-input');
       saveTitle ();
@@ -68,7 +67,6 @@ function editTitleBox() {
   `;
   document.querySelector(".js-edit-title-container").innerHTML = html;
 }
-
 
 function saveTitle() {
   const todoListTitleJson = JSON.stringify(todoListTitle);
@@ -81,7 +79,7 @@ function loadTodoListTitle() {
   if (todoListTitleJson) {
     todoListTitle = JSON.parse(todoListTitleJson);
   } else {
-    todoListTitle = null;
+    todoListTitle = ``;
   }
 }
 
@@ -111,6 +109,7 @@ function handleOnkeydown(event) {
 function renderTodoList() {
   let todoListHtml = ``;
 
+  
   renderTodoTitle(todoListTitle);
   renderTodoInput();
 
@@ -118,9 +117,9 @@ function renderTodoList() {
     const todoObject = todoList[i];
     const doneClass = todoObject.done ? "done-clicked" : "";
     const html = `
-        <div id = "js-input-text-${i}" class = "todo-text ${doneClass}" >&bull; ${todoObject.name} 
+        <div id = "js-input-text-${i}" class = "${doneClass}" >&bull; ${todoObject.name} 
         </div>
-        <div id = "js-date-text-${i}" class = "todo-date ${doneClass}">due: ${todoObject.dueDate} 
+        <div id = "js-date-text-${i}" class = "${doneClass}">due: ${todoObject.dueDate} 
         </div>
         <button onclick = "
           addClassToText(${i});
