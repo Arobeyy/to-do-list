@@ -12,11 +12,9 @@ function dropDownTitleBox() {
   const html = `
     <input class="js-title-input title-input-box" placeholder=" add title" />
     <button class="js-save-title-button title-save-button" onclick="
-      addTitle();
+      addTitle('.js-title-input');
       renderTodoInput();
-      saveTitle ();
-      saveTodoList ();
-      removeAddInputBox (); 
+      removeInputBox ('.js-add-title-container'); 
     ">
       <img class = "save-img" src = "icons/check_circle.png">
     </button>
@@ -24,20 +22,20 @@ function dropDownTitleBox() {
   document.querySelector(".js-add-title-container").innerHTML = html;
 }
 
-function removeAddInputBox() {
-  document.querySelector(".js-add-title-container").innerHTML = ``;
+function removeInputBox(box) {
+  document.querySelector(`${box}`).innerHTML = null;
 }
 
-function addTitle() {
-  const inputElement = document.querySelector(".js-title-input");
+function addTitle(from) {
+  const inputElement = document.querySelector(`${from}`);
   const title = inputElement.value;
 
   if (!title) {
-    alert("add title for your to-do list.");
+    alert("Add title, title makes your to-do list organizable.");
   }
 
-  renderTodoTitle(title);
   todoListTitle = title;
+  renderTodoTitle(title);
   saveTitle();
 }
 
@@ -48,8 +46,9 @@ function renderTodoTitle(title) {
         editTitleBox();
       ">
         <img class = "edit-title" src = "icons/edit_square_brown.png">
+        <span class="tooltip-text">Edittitle</span>
       </button>
-      <div class = "edit-title-input-box">${title}</div>
+      <div class = "edited-title">${title}</div>
     </div>
   `;
 
@@ -58,30 +57,18 @@ function renderTodoTitle(title) {
 
 function editTitleBox() {
   const html = `
-    <input class="js-edit-title-input" placeholder="add title" />
-    <button class="js-save-edited-title" onclick="
-      editTitle();
+    <input class="js-edit-title-input edit-title-input" placeholder="Enter a title" />
+    <button class="js-save-edited-title edit-save-button" onclick="
+      addTitle('.js-edit-title-input');
       saveTitle ();
-      removeEditInputBox();
+      removeInputBox('.js-edit-title-container');
     ">
-      save
+      <img class = "edit-save-img" src = "icons/check_circle_brown.png">
     </button>
   `;
   document.querySelector(".js-edit-title-container").innerHTML = html;
 }
 
-function removeEditInputBox() {
-  document.querySelector(".js-edit-title-container").innerHTML = ``;
-}
-
-function editTitle() {
-  const inputElement = document.querySelector(".js-edit-title-input");
-  const title = inputElement.value;
-
-  renderTodoTitle(title);
-  todoListTitle = title;
-  saveTitle();
-}
 
 function saveTitle() {
   const todoListTitleJson = JSON.stringify(todoListTitle);
@@ -94,7 +81,7 @@ function loadTodoListTitle() {
   if (todoListTitleJson) {
     todoListTitle = JSON.parse(todoListTitleJson);
   } else {
-    todoListTitle = ``;
+    todoListTitle = null;
   }
 }
 
@@ -124,18 +111,16 @@ function handleOnkeydown(event) {
 function renderTodoList() {
   let todoListHtml = ``;
 
-  if (todoListTitle) {
-    renderTodoTitle(todoListTitle);
-    renderTodoInput();
-  }
+  renderTodoTitle(todoListTitle);
+  renderTodoInput();
 
   for (let i = 0; i < todoList.length; i++) {
     const todoObject = todoList[i];
     const doneClass = todoObject.done ? "done-clicked" : "";
     const html = `
-        <div id = "js-input-text-${i}" class = "${doneClass}" >&bull; ${todoObject.name} 
+        <div id = "js-input-text-${i}" class = "todo-text ${doneClass}" >&bull; ${todoObject.name} 
         </div>
-        <div id = "js-date-text-${i}" class = "${doneClass}">due: ${todoObject.dueDate} 
+        <div id = "js-date-text-${i}" class = "todo-date ${doneClass}">due: ${todoObject.dueDate} 
         </div>
         <button onclick = "
           addClassToText(${i});

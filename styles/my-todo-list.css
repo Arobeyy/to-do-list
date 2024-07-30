@@ -67,14 +67,6 @@ button {
   margin-right: 5px;
 }
 
-/*
-.sidebar-icon-button {
-  color: white;
-  font-weight: bold;
-  flex: 1;
-}
-*/
-
 .sidebar-home-button,
 .sidebar-create-button,
 .sidebar-notes-button {
@@ -83,6 +75,7 @@ button {
   color: white;
   font-weight: bold;
   background-color: transparent;
+  text-decoration:underline;
 }
 
 .tooltip-text {
@@ -105,7 +98,8 @@ button {
 
 .sidebar-home-button:hover .tooltip-text,
 .sidebar-create-button:hover .tooltip-text,
-.sidebar-notes-button:hover .tooltip-text {
+.sidebar-notes-button:hover .tooltip-text,
+.edit-title-button:hover .tooltip-text {
   visibility: visible;
   opacity: 1;
 }
@@ -137,7 +131,8 @@ button {
   width: 100%;
 }
 
-.title-container {
+.title-container,
+.edit-title-container {
   display: flex;
   align-items: center;
   column-gap: 4px;
@@ -171,6 +166,54 @@ button {
   overflow: auto; /* Enable scrolling if content overflows */
 }
 
+.edit-grid {
+  display: grid;
+  grid-template-columns: 27px 1fr;
+  align-items: center;
+  column-gap: 10px;
+  margin: 20px 20px 10px 0;
+  max-width: 300px;
+}
+
+.edit-title {
+  margin-top: 4px;
+  opacity: 0.5;
+}
+
+.edit-title:hover {
+  opacity: 1;
+} 
+
+.edit-title-button {
+  padding: 0;
+}
+
+.edit-title-container {
+  display: grid;
+  grid-template-columns: 215px 35px;
+  align-items: center;
+  column-gap: 10px;
+  padding: 0;
+}
+
+.edit-title-input {
+  font-size: 15px;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: rgb(240, 235, 206);
+}
+
+.edited-title {
+  font-size: 30px;
+}
+
+.edit-save-img {
+  width: 100%;
+  border-radius: 20px;
+}
+
 /* Todo Container */
 .todo-container {
   padding: 20px;
@@ -181,7 +224,7 @@ button {
   grid-template-columns: 300px 32px 42px;
   align-items: center;
   column-gap: 10px;
-  margin: 45px 20px 10px 0;
+  margin: 30px 20px 10px 0;
 }
 
 .todo-grid {
@@ -193,6 +236,7 @@ button {
   row-gap: 10px;
   max-width: 760px;
   margin-right: 20px;
+  margin-left: 8px;
 }
 
 /* Input Styles */
@@ -219,7 +263,8 @@ button {
 .add-icon,
 .delete-icon,
 .done-icon,
-.edit-title {
+.edit-title,
+.edit-save-button  {
   width: 100%;
   height: 100%;
   background-color: transparent;
@@ -236,20 +281,3 @@ button {
   color: gray;
 }
 
-.edit-grid {
-  display: grid;
-  grid-template-columns: 32px 1fr;
-  align-items: center;
-  column-gap: 10px;
-  margin: 20px 20px 10px 0;
-  max-width: 300px;
-}
-
-.edit-title {
-  margin-top: 4px;
-  opacity: 0.5;
-}
-
-.edit-title:hover {
-  opacity: 1;
-}
