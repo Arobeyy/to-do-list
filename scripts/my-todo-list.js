@@ -1,4 +1,4 @@
-let   todoListTitle = localStorage.getItem("todoListTitle") || null;
+let todoListTitle = localStorage.getItem("todoListTitle") || null;
 let todoList = [];
 
 // Load to-do list from localStorage when the page loads

@@ -32,7 +32,8 @@
               src="icons/home_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
             />
             <div>
-              <button class="sidebar-home-button">Home
+              <button class="sidebar-home-button">
+                Home
                 <span class="tooltip-text">back to home</span>
               </button>
             </div>
@@ -43,9 +44,12 @@
               src="icons/add_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
             />
             <div>
-              <button class="sidebar-create-button" onclick="
+              <button
+                class="sidebar-create-button"
+                onclick="
                 dropDownTitleBox();
-              ">
+              "
+              >
                 Create
                 <span class="tooltip-text">create to-do list</span>
               </button>
@@ -66,13 +70,11 @@
           </div>
         </div>
       </div>
-
       <div class="content-container">
         <div class="todo-container">
           <div class="todo-title"></div>
           <div class="js-edit-title-container"></div>
           <div class="js-created-todo"></div>
-          
           <div class="js-todo-list todo-grid"></div>
         </div>
       </div>
